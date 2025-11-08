@@ -7,207 +7,168 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<style>
-  :host {
-    --bright-blue: oklch(51.01% 0.274 263.83);
-    --electric-violet: oklch(53.18% 0.28 296.97);
-    --french-violet: oklch(47.66% 0.246 305.88);
-    --vivid-pink: oklch(69.02% 0.277 332.77);
-    --hot-red: oklch(61.42% 0.238 15.34);
-    --orange-red: oklch(63.32% 0.24 31.68);
 
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
-
-    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
-
-    --pill-accent: var(--bright-blue);
-
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1 {
-    font-size: 3.125rem;
-    color: var(--gray-900);
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: -0.125rem;
-    margin: 0;
-    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-  }
-
-  p {
-    margin: 0;
-    color: var(--gray-700);
-  }
-
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
-  .angular-logo {
-    max-width: 9.2rem;
-  }
-
-  .content {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 3rem;
-  }
-
-  .content h1 {
-    margin-top: 1.75rem;
-  }
-
-  .content p {
-    margin-top: 1.5rem;
-  }
-
-  .divider {
-    width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
-    margin-inline: 0.5rem;
-  }
-
-  .pill-group {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-  }
-
-  .pill {
-    display: flex;
-    align-items: center;
-    --pill-accent: var(--bright-blue);
-    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
-    color: var(--pill-accent);
-    padding-inline: 0.75rem;
-    padding-block: 0.375rem;
-    border-radius: 2.75rem;
-    border: 0;
-    transition: background 0.3s ease;
-    font-family: var(--inter-font);
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.4rem;
-    letter-spacing: -0.00875rem;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .pill:hover {
-    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
-  }
-
-  .pill-group .pill:nth-child(6n + 1) {
-    --pill-accent: var(--bright-blue);
-  }
-  .pill-group .pill:nth-child(6n + 2) {
-    --pill-accent: var(--electric-violet);
-  }
-  .pill-group .pill:nth-child(6n + 3) {
-    --pill-accent: var(--french-violet);
-  }
-
-  .pill-group .pill:nth-child(6n + 4),
-  .pill-group .pill:nth-child(6n + 5),
-  .pill-group .pill:nth-child(6n + 6) {
-    --pill-accent: var(--hot-red);
-  }
-
-  .pill-group svg {
-    margin-inline-start: 0.25rem;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: center;
-    gap: 0.73rem;
-    margin-top: 1.5rem;
-  }
-
-  .social-links path {
-    transition: fill 0.3s ease;
-    fill: var(--gray-400);
-  }
-
-  .social-links a:hover svg path {
-    fill: var(--gray-900);
-  }
-
-  @media screen and (max-width: 650px) {
-    .content {
-      flex-direction: column;
-      width: max-content;
-    }
-
-    .divider {
-      height: 1px;
-      width: 100%;
-      background: var(--red-to-pink-to-purple-horizontal-gradient);
-      margin-block: 1.5rem;
-    }
-  }
-</style>
 
 
 <!-- <hr width="100%"> -->
+  <div class="divmain">
+      <div class="title">
+        <h1>ĐĂNG KÝ MÔN HỌC</h1>
+        <div class="btn-export">
+           <p-button label="Export" icon="pi pi-upload" severity="secondary" (onClick)="exportCSV()"></p-button>
+        </div>
+       
+      </div>
+      <div class="card">
+        <p-floatlabel>
+          <input id="studentName" pInputText [(ngModel)]="studentName" />
+          <label for="username">Ho Va Ten</label>
+        </p-floatlabel>
+      
+        <p-autocomplete [(ngModel)]="studentId" [dropdown]="true" [suggestions]="studentIds" (completeMethod)="search($event)"  placeholder="Nhập hoặc chọn Mã số sinh viên" />
+      
+        <p-datepicker [(ngModel)]="date" placeholder="Ngày Đăng Ký" />
+      </div>
+      <div class="card flex justify-center">
+        <div class="flex flex-wrap gap-4">
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Học Bù" [(ngModel)]="ingredient" inputId="ingredient1" />
+            <label for="ingredient1" class="ml-2">Học Bù</label>
+        </div>
 
-<p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template #header>
-        <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
-        </tr>
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Theo Lớp SV" [(ngModel)]="ingredient" inputId="ingredient2" />
+            <label for="ingredient2" class="ml-2">Theo Lớp SV</label>
+        </div>
+
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Đúng Kế Hoạch" [(ngModel)]="ingredient" inputId="ingredient3" />
+            <label for="ingredient3" class="ml-2">Đúng Kế Hoạch</label>
+        </div>
+
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Học Lại" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Học Lại</label>
+        </div>
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Cải Thiện" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Cải Thiện</label>
+        </div>
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Học Vượt" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Học Vượt</label>
+        </div>
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Tất Cả Học Phần" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Tất Cả Học Phần</label>
+        </div>
+        </div>
+      </div>
+      <div class="formbox">
+        <p-toast />
+        <div class="card flex justify-center">
+          <form #exampleForm="ngForm" (ngSubmit)="registerSubjects(exampleForm)" class="flex justify-center flex-col gap-4 w-full md:w-80">
+        <div class="flex flex-col gap-1">
+            <p-multiselect
+               #subjectsSelect="ngModel"
+               [options]="subjects"
+               [(ngModel)]="selectedSubjects"
+               name="subjects"
+               optionLabel="name"
+                placeholder="Chọn môn học"
+                [maxSelectedLabels]="3"
+                [invalid]="subjectsSelect.invalid && (subjectsSelect.touched || exampleForm.submitted)"
+                fluid
+                required
+            />
+            @if (subjectsSelect.invalid && (subjectsSelect.touched || exampleForm.submitted)) {
+                <p-message severity="error" size="small" variant="simple">Vui lòng chọn ít nhất một môn học.</p-message>
+            }
+        </div>
+        <button pButton severity="secondary" type="submit"><span pButtonLabel>Đăng Ký</span></button>
+          </form>
+        </div>  
+        <div class="card">
+  <p-toast />
+  <p-table [value]="courses" dataKey="id" editMode="row" exportFilename="danh-sach-mon-hoc" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:22%">Mã Môn Học</th>
+        <th style="width:22%">Tên Môn Học</th>
+        <th style="width:22%">Số Tín Chỉ</th>
+        <th style="width:22%">Trạng Thái</th>
+        <th style="width:12%"></th>
+      </tr>
     </ng-template>
-    <ng-template #body let-product>
-        <tr>
-            <td>{{ product.code }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.quantity }}</td>
-        </tr>
+
+    <ng-template pTemplate="body" let-course let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="course">
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="course.courseCode" />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ course.courseCode }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="course.courseName" required />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ course.courseName }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="number" [(ngModel)]="course.credit" />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ course.credit }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-select [options]="statuses" [(ngModel)]="course.status" [style]="{ width: '100%' }"></p-select>
+            </ng-template>
+            <ng-template pTemplate="output">
+              <p-tag [value]="course.status" [severity]="getSeverity(course.status)" />
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        
+        <td>
+          <div class="flex items-center justify-center gap-2">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(course)" text rounded severity="secondary"></button>
+            <button *ngIf="!editing" pButton pRipple type="button" pTrashEditableRow icon="pi pi-trash" (click)="onRowEditTrash(course, ri)" text rounded severity="secondary"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(course)" text rounded severity="secondary"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(course, ri)" text rounded severity="secondary"></button>
+          </div>
+        </td>
+      </tr>
     </ng-template>
-</p-table>
+  </p-table>
+        </div>
+
+      </div>
+  </div>
 
 
-<div class="card flex justify-center">
-    <p-slider [(ngModel)]="value" class="w-56" />
-</div>
+
+
+
+
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->

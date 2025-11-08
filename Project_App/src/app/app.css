@@ -1,0 +1,62 @@
+.divmain {
+    border: 1px solid #dfdfdf;
+    border-top: 0;
+    height: 100rem;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.title {
+    background-color: #003768;
+    font-weight: bold;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.title h1{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+
+.ml-2 {
+    color: #000;
+}
+
+.formbox {
+    border: 1px solid #000;
+    margin-top: 20px;
+    background-color: #f5f5f5;
+}
+
+.custom-buttons button {
+    background-color: #0066cc !important;
+  color: white !important;
+  border: none !important;
+}
+
+.custom-buttons button:hover {
+  background-color: #004999 !important;
+}
+
+.btn-export {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
