@@ -1,0 +1,33 @@
+.main {
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.card1 {
+    margin-top: 20px;
+    padding: 16px;
+    border: 2px solid #ddd;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+    margin-bottom: 20px;
+
+}
+
+.left-btn .mr-2 {
+   
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.right-btn .mr-2{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
