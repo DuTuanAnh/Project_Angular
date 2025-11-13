@@ -1,0 +1,154 @@
+
+
+<!-- <hr width="100%"> -->
+  <div class="divmain">
+      <div class="title">
+        <h1>ĐĂNG KÝ MÔN HỌC</h1>
+        <div class="btn-export">
+           <p-button label="Export" icon="pi pi-upload" severity="secondary" (onClick)="exportCSV()"></p-button>
+        </div>
+       
+      </div>
+      <div class="card">
+        <p-floatlabel>
+          <input id="studentName" pInputText [(ngModel)]="studentName" />
+          <label for="username">Ho Va Ten</label>
+        </p-floatlabel>
+      
+        <p-autocomplete [(ngModel)]="studentId" [dropdown]="true" [suggestions]="studentIds" (completeMethod)="search($event)"  placeholder="Nhập hoặc chọn Mã số sinh viên" />
+      
+        <p-datepicker [(ngModel)]="date" placeholder="Ngày Đăng Ký" />
+      </div>
+      <div class="card flex justify-center">
+        <div class="flex flex-wrap gap-4">
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Học Bù" [(ngModel)]="ingredient" inputId="ingredient1" />
+            <label for="ingredient1" class="ml-2">Học Bù</label>
+        </div>
+
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Theo Lớp SV" [(ngModel)]="ingredient" inputId="ingredient2" />
+            <label for="ingredient2" class="ml-2">Theo Lớp SV</label>
+        </div>
+
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Đúng Kế Hoạch" [(ngModel)]="ingredient" inputId="ingredient3" />
+            <label for="ingredient3" class="ml-2">Đúng Kế Hoạch</label>
+        </div>
+
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Học Lại" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Học Lại</label>
+        </div>
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Cải Thiện" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Cải Thiện</label>
+        </div>
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Học Vượt" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Học Vượt</label>
+        </div>
+        <div class="flex items-center">
+            <p-radiobutton name="pizza" value="Tất Cả Học Phần" [(ngModel)]="ingredient" inputId="ingredient4" />
+            <label for="ingredient4" class="ml-2">Tất Cả Học Phần</label>
+        </div>
+        </div>
+      </div>
+      <div class="formbox">
+        <p-toast />
+        <div class="card flex justify-center">
+          <form #exampleForm="ngForm" (ngSubmit)="registerSubjects(exampleForm)" class="flex justify-center flex-col gap-4 w-full md:w-80">
+        <div class="flex flex-col gap-1">
+            <p-multiselect
+               #subjectsSelect="ngModel"
+               [options]="subjects"
+               [(ngModel)]="selectedSubjects"
+               name="subjects"
+               optionLabel="name"
+                placeholder="Chọn môn học"
+                [maxSelectedLabels]="3"
+                [invalid]="subjectsSelect.invalid && (subjectsSelect.touched || exampleForm.submitted)"
+                fluid
+                required
+            />
+            @if (subjectsSelect.invalid && (subjectsSelect.touched || exampleForm.submitted)) {
+                <p-message severity="error" size="small" variant="simple">Vui lòng chọn ít nhất một môn học.</p-message>
+            }
+        </div>
+        <button pButton severity="secondary" type="submit"><span pButtonLabel>Đăng Ký</span></button>
+          </form>
+        </div>  
+        <div class="card">
+  <p-toast />
+  <p-table [value]="courses" dataKey="id" editMode="row" exportFilename="danh-sach-mon-hoc" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:22%">Mã Môn Học</th>
+        <th style="width:22%">Tên Môn Học</th>
+        <th style="width:22%">Số Tín Chỉ</th>
+        <th style="width:22%">Trạng Thái</th>
+        <th style="width:12%"></th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-course let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="course">
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="course.courseCode" />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ course.courseCode }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="course.courseName" required />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ course.courseName }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="number" [(ngModel)]="course.credit" />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ course.credit }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-select [options]="statuses" [(ngModel)]="course.status" [style]="{ width: '100%' }"></p-select>
+            </ng-template>
+            <ng-template pTemplate="output">
+              <p-tag [value]="course.status" [severity]="getSeverity(course.status)" />
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        
+        <td>
+          <div class="flex items-center justify-center gap-2">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(course)" text rounded severity="secondary"></button>
+            <button *ngIf="!editing" pButton pRipple type="button" pTrashEditableRow icon="pi pi-trash" (click)="onRowEditTrash(course, ri)" text rounded severity="secondary"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(course)" text rounded severity="secondary"></button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(course, ri)" text rounded severity="secondary"></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+        </div>
+
+      </div>
+  </div>
