@@ -8,22 +8,39 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<main class="main">
-  <div class="card1">
-    <div class="header">
-      <p-button label="New" icon="pi pi-plus" class="mr-2" (click)="addNewProduct()" />
-      <p-iconfield iconPosition="left">
-        <p-inputicon>
-          <i class="pi pi-search"></i>
-        </p-inputicon>
-        <input type="text" pInputText placeholder="Search" [(ngModel)]="searchQuery" />
-      </p-iconfield>
-      <p-button label="Export" icon="pi pi-upload" class="mr-2" severity="secondary" (click)="exportProducts()" />
-    </div>
-  </div>
 
-  
-</main>
+<div class="main">
+  <div class="card ">
+    <div class="text">
+      <h1>LOGIN</h1>
+    </div>
+    <div class="flex flex-col ">
+      <label for="username">Username</label>
+      <p-iconfield>
+        <p-inputicon class="pi pi-user" />
+        <input pInputText id="username" type="text" [(ngModel)]="username" placeholder="Enter username" />
+      </p-iconfield>
+      <small id="username-help"></small>
+    </div>
+    <div class="flex flex-col gap-2 mt-4">
+      <label for="password">Password</label>
+      <p-iconfield>
+        <p-inputicon class="pi pi-unlock" />
+        <input pInputText id="password" type="password" [(ngModel)]="password" placeholder="Enter password" />
+      </p-iconfield>
+      <small id="password-help"></small>
+    </div>
+   <div class="flex items-center">
+      <p-checkbox [(ngModel)]="rememberMe" binary="true" inputId="rememberMe"></p-checkbox>
+      <label for="rememberMe" class="ml-2">Remember me</label>
+    </div>
+    <div class="card2 flex justify-center">
+      <p-button label="LOGIN" (onClick)="onLogin()" />
+    </div>
+      <p-toast></p-toast>
+  </div>
+</div>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
